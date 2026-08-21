@@ -32,12 +32,22 @@ jobs:
         run: mvn -B test -Denv=test -Dheadless=true
         continue-on-error: true
 
-      - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1.13
+      - name: Ensure allure-results exists
+        if: always()
+        run: mkdir -p target/allure-results
+
+      - name: Set up Node (for Allure CLI)
+        uses: actions/setup-node@v4
         if: always()
         with:
-          allure_results: target/allure-results
-          allure_report: allure-report
+          node-version: '20'
+
+      # Official Allure CLI via npx — avoids the third-party
+      # simple-elf/allure-report-action, whose Docker image is missing
+      # `xargs` and silently produces no report on some runners.
+      - name: Generate Allure report
+        if: always()
+        run: npx --yes allure-commandline@2.32.0 generate target/allure-results --clean -o allure-report
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
