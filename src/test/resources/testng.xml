@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="CrossBrowserPlaywrightSuite"
+       parallel="tests"
+       thread-count="7"
+       data-provider-thread-count="3"
+       verbose="1">
+    <listeners>
+        <!-- PLACE IN ORDER -->
+        <!-- RetryListener first — sets retryAnalyzer on @Test -->
+        <!-- TestListener second — our own logging -->
+        <!-- AllureTestNg last — Allure's own report-data listener -->
+        <listener class-name="org.example.listeners.RetryListener"/>
+        <listener class-name="org.example.listeners.TestListener"/>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+    <!-- ─── Login Tests — Browser Matrix ────────────────────────── -->
+    <test name="Login-Chromium">
+        <parameter name="browser" value="chromium"/>
+        <classes>
+            <class name="org.example.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Login-Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="org.example.tests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Login-WebKit">
+        <parameter name="browser" value="webkit"/>
+        <classes>
+            <class name="org.example.tests.LoginTest"/>
+        </classes>
+    </test>
+</suite>
+

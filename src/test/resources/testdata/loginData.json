@@ -1,0 +1,62 @@
+[
+  {
+    "testCaseName"          : "ValidLogin",
+    "email"                 : "test4545@youmail.com",
+    "password"              : "q9sgCu@u8LddRZP",
+    "expectedOutcome"       : "success",
+    "expectedLoginError"    : "",
+    "expectedEmailError"    : "",
+    "expectedPasswordError" : "",
+    "runMode"               : "Y"
+  },
+  {
+    "testCaseName"          : "InvalidLogin",
+    "email"                 : "invalidemail@test.com",
+    "password"              : "Psswrd123",
+    "expectedOutcome"       : "error",
+    "expectedLoginError"    : "Invalid email or password",
+    "expectedEmailError"    : "",
+    "expectedPasswordError" : "",
+    "runMode"               : "Y"
+  },
+  {
+    "testCaseName"          : "EmptyFields",
+    "email"                 : "",
+    "password"              : "",
+    "expectedOutcome"       : "error",
+    "expectedLoginError"    : "",
+    "expectedEmailError"    : "Enter a valid email",
+    "expectedPasswordError" : "Password must be at least 6 characters",
+    "runMode"               : "Y"
+  },
+  {
+    "testCaseName"          : "InvalidEmailFormat",
+    "email"                 : "invalidemail",
+    "password"              : "validpassword66",
+    "expectedOutcome"       : "error",
+    "expectedLoginError"    : "",
+    "expectedEmailError"    : "Enter a valid email",
+    "expectedPasswordError" : "",
+    "runMode"               : "Y"
+  },
+  {
+    "testCaseName"          : "ShortPassword",
+    "email"                 : "test2334@test.com",
+    "password"              : "short",
+    "expectedOutcome"       : "error",
+    "expectedLoginError"    : "",
+    "expectedEmailError"    : "",
+    "expectedPasswordError" : "Password must be at least 6 characters",
+    "runMode"               : "Y"
+  },
+  {
+    "testCaseName"          : "LockedUser",
+    "email"                 : "locked@test.com",
+    "password"              : "somepassword",
+    "expectedOutcome"       : "error",
+    "expectedLoginError"    : "Invalid email or password",
+    "expectedEmailError"    : "",
+    "expectedPasswordError" : "",
+    "runMode"               : "N"
+  }
+]
